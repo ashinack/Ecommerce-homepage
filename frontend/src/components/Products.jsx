@@ -6,9 +6,9 @@ const Products = ({data}) => {
     
          <Card  className="mx-auto">
       <Card.Body>
-       <h2>{data.first_name}</h2>
-      <h5>{data.id}</h5>
-      {/* <img src={data.image} alt=""></img> */}
+       <h2>{data.name}</h2>
+      {/* <h5>{data.id}</h5> */}
+      <img src={data.image} alt=""></img>
       </Card.Body>
       </Card>
       
