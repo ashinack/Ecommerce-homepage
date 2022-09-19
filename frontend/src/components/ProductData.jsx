@@ -8,7 +8,7 @@ import { Button, Card } from 'react-bootstrap'
 const BASE_URL = `http://localhost:5000/`
 
 const ProductData = () => {
-    const [state,setState]=useState([])
+    const [products,setProducts]=useState([])
     const [title,setTitle]=useState("")
     const [header,setheader]=useState([])
     const [error,setError]=useState("")
@@ -19,15 +19,15 @@ const ProductData = () => {
             
             setheader(res.data.header)
             setTitle(res.data.title)
-            setState(res.data.products)
+            setProducts(res.data.products)
         }).catch((res)=>{
            
             setError(res.data)
         })
         document.title=title
 
-    },[title])
-  console.log(state);
+    },[title,products,header])
+  
     
 
   return (
@@ -37,7 +37,7 @@ const ProductData = () => {
         <div className='Row'>
             <div className='posters'>
         {
-            state.map((key,index)=>{
+            products.map((key,index)=>{
                 return (
 
                     
