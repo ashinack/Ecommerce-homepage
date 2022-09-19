@@ -1,10 +1,10 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-
+import './Product.css'
 import axios from 'axios'
-import Products from './Products'
 import Header from './Header'
+import { Button, Card } from 'react-bootstrap'
 const BASE_URL = `http://localhost:5000/`
 
 const ProductData = () => {
@@ -12,40 +12,50 @@ const ProductData = () => {
     const [title,setTitle]=useState("")
     const [header,setheader]=useState([])
     const [error,setError]=useState("")
-    // useEffect(()=>{
-        
-    // })
+    
     useEffect(()=>{
-        console.log('lllll');
+        
         axios.get(`${BASE_URL}`).then((res)=>{
-            console.log(res);
+            
             setheader(res.data.header)
             setTitle(res.data.title)
             setState(res.data.products)
         }).catch((res)=>{
-            console.log(res);
+           
             setError(res.data)
         })
         document.title=title
 
     },[title])
-    console.log('ppppp888');
-    console.log(header);
+  console.log(state);
     
 
   return (
     <>
     <Header headerdata={header}/>
-    <div class="container mt-4" >
-      
+   
+        <div className='Row'>
+            <div className='posters'>
         {
             state.map((key,index)=>{
-                return <Products data={key} key={index}/>
+                return (
+
+                    
+      <Card style={{width:'17rem',height:'17rem',color:'black'}} className='mx-3 my-5'>
+      <Card.Body key={index}>
+        
+       
+      <img src={key.image} alt="" style={{width:'200px',height:'100px'}}></img>
+      <h2 >{key.name}</h2>
+      <span>{key.Category}</span><br></br>
+      <Button className='mt-3'>ADD TO CART</Button>
+      </Card.Body>
+      </Card>)
+               
             })
         }
-      
-     
-    </div>
+        </div>
+      </div>
     </>
   )
 }

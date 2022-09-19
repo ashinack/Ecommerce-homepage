@@ -1,0 +1,13 @@
+.Row {
+    /* margin-left: 20px; */
+    color: #fff;
+}
+
+.posters {
+    display: flex;
+    /* padding: 20px; */
+}
+.cards{
+    width: 300px;
+    height: 200px;
+}
